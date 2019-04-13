@@ -23,8 +23,8 @@ var Engine = Matter.Engine,
   MouseConstraint = Matter.MouseConstraint;
 
 function setup() {
-  wWidth = 800;
-  wHeight = 600;
+  wWidth = 640;
+  wHeight = 480;
   canv = createCanvas(wWidth, wHeight);
   canv.parent('canvasParent');
   canvDiv = select('#canvasParent');

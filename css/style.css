@@ -1,0 +1,11 @@
+body {
+    font-size: 18px;
+}
+
+.container {
+    display: block;
+    position: relative;
+    max-width: 800px;
+    margin-left: 10%;
+    margin-top: 10%;
+}

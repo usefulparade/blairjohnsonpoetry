@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=EB+Garamond:400,400i');
+
 body {
     width: 100vw;
     height: 100vh;
     padding: 0px;
     margin: 0px;
+    font-family: 'EB Garamond', serif;
 }
 
 p {
     font-size: 24px;
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */  
+    cursor: text; 
 
 }
 

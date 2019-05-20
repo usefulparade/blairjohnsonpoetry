@@ -72,7 +72,7 @@ function updateText(){
     setTexts();
     textP = document.getElementById("textToChange");
     textP.innerHTML = texts[hour];
-    if (hour <=6 || hour >= 22){
+    if (hour <=6 || hour >= 21){
         wait = minuteCountdown + ":" + secondCountdown;
     } else {
         wait = hourCountdown + ":" + minuteCountdown + ":" + secondCountdown;

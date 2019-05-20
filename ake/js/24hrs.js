@@ -56,7 +56,7 @@ function updateTime(){
     minuteCountdown = ("0"+(59-minute)).slice(-2);
     second = ("0"+date.getSeconds()).slice(-2);
     secondCountdown = ("0"+(59-second)).slice(-2);
-    hourCountdown = ("0" + (22-hour)).slice(-2);
+    hourCountdown = ("0" + (21-hour)).slice(-2);
 }
 
 function changeText(){
@@ -72,7 +72,7 @@ function updateText(){
     setTexts();
     textP = document.getElementById("textToChange");
     textP.innerHTML = texts[hour];
-    if (hour <=6 || hour >= 21){
+    if (hour <=6 || hour >= 22){
         wait = minuteCountdown + ":" + secondCountdown;
     } else {
         wait = hourCountdown + ":" + minuteCountdown + ":" + secondCountdown;

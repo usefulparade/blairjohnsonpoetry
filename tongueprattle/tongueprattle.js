@@ -134,7 +134,6 @@ var utterances = [];
 for (j=0;j<eachWord.length;j++){
     utterances[j] = new SpeechSynthesisUtterance(eachWord[j]);
     utterances[j].rate = 1.3;
-    utterances[j].pitch = 0.1;
 }
 
 console.log(utterances[1]);

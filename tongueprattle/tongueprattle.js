@@ -129,17 +129,12 @@ var interval = 500;
 
 var synth = window.speechSynthesis;
 var utterances = [];
-var voices = synth.getVoices();
-console.log(voices);
+
 
 for (j=0;j<eachWord.length;j++){
     utterances[j] = new SpeechSynthesisUtterance(eachWord[j]);
     utterances[j].rate = 1.3;
-    utterances[j].pitch = 1;
-    if (voices[40].name == "Victoria"){
-        utterances[j].voice = voices[40];
-    }
-
+    utterances[j].pitch = 0.1;
 }
 
 console.log(utterances[1]);

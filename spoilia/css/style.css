@@ -64,12 +64,14 @@ canvas {
 
 #textTable {
     display: table;
+    table-layout: fixed;
     width: 100%;
     height: 100%;
 }
 
 .text {
     display: table-cell;
+    word-wrap: break-word;
     vertical-align: bottom;
 }
 
@@ -77,7 +79,6 @@ canvas {
     display: none;
     width: 100vw;
     text-align: center;
-
 }
 
 .on {
@@ -89,21 +90,20 @@ canvas {
 }
 
 @media only screen and (max-width: 780px){
-    #canvasParent {
-        display: none;
+    
+    p {
+        font-size: 20px;
     }
 
-    .text {
-        display: none;
-    }
-
-    .smallScreens {
-        display: block;
+    .obscuredText {
+        width: 100vw;
     }
 
     .container {
+        display: fixed;
+        
         width: 100vw;
         height: 100vh;
-        margin-top: 0px;
+        margin-bottom: 0px;
     }
 }

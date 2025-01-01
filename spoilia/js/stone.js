@@ -31,6 +31,7 @@ function Stone(x, y, s, n){
       
       //STROKE
       strokeWeight(0.2);
+      // strokeWeight(4);
       if (this.clicked){
         stroke(5);
       } else {
@@ -55,7 +56,9 @@ function Stone(x, y, s, n){
   this.mouseStuff = function(){
     this.pos.x = this.body.position.x;
     this.pos.y = this.body.position.y;
-    if (mouseX > this.pos.x - this.radius && mouseX < this.pos.x + this.radius && mouseY > this.pos.y - this.radius && mouseY < this.pos.y + this.radius){
+    let mx = touches[0] ? touches[0].x : mouseX;
+    let my = touches[0] ? touches[0].y : mouseY;
+    if (mx > this.pos.x - this.radius && mx < this.pos.x + this.radius && my > this.pos.y - this.radius && my < this.pos.y + this.radius){
         this.over = true;
       } else {
         this.over = false;
@@ -69,10 +72,6 @@ function Stone(x, y, s, n){
     this.mouseDistY = map((this.pos.y-this.mouseVect.y), 0, 600, 0, 8);
     
     this.f = new p5.Vector(-this.mouseDistX, -this.mouseDistY);
-    
-    
-    
-    
     
     if (this.clicked){
       Matter.Body.applyForce(this.body, this.pos, this.f);

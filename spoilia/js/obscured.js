@@ -36,9 +36,6 @@ function setup() {
   world.gravity.scale = 0.001;
   container();
   
-  calvinoText = loadStrings("obscuredGame/assets/calvino.txt");
-  append(texts, calvinoText);
-  
   for (var i=0;i<3;i++){
     var s = new Stone(random(0, width), random(0, height), random(diagonal/8, diagonal/9), random(10, 20));
     stones.push(s);
@@ -48,25 +45,11 @@ function setup() {
     stones.push(s);
   }
   
-  
   for (var j=0;j<stones.length;j++){
     stones[j].createPoly();
     bods[j] = stones[j].body;
   }
-  
-  var canvasmouse = Mouse.create(canvas.elt);
-  
-  var mOptions = {
-    mouse: canvasmouse
-  };
 
-  mConstraint = MouseConstraint.create(engine, mOptions);
-  mConstraint.constraint.stiffness = 1;
-  //console.log(mConstraint);
-  
-  //World.add(world, mConstraint);
-  
-  //engine.timing.timeScale = 0.2;
   engine.positionIterations = 3;
   
   Engine.run(engine);
@@ -74,7 +57,6 @@ function setup() {
 
 function draw() {
   clear();
-  //textDisplay();
   
   
   for (var i=0;i<stones.length;i++){
@@ -83,7 +65,6 @@ function draw() {
     stones[i].mouseForce();
   }
   
-  deviceOrient();
   passThrough();
 }
 
@@ -96,7 +77,6 @@ function textDisplay(){
     textFont("Georgia");
     text(texts[0], 10, 10, width-10, height-10);
   pop();
-  
 }
 
 function container(){
@@ -110,7 +90,6 @@ function container(){
 
 function constraintSlower(){
     if (mConstraint.body){
-    
     // for (var i=0;i<stones.length;i++){
     //   if (mConstraint.body.position.x > stones[i].pos.x - 10 && mConstraint.body.position.x < stones[i].pos.x + 10){
     //     stones[i].clicked = true;
@@ -123,6 +102,7 @@ function constraintSlower(){
 }
 
 function mousePressed(){
+  if (touches[0]) return;
   for (var i=0;i<stones.length;i++){
     if (stones[i].over){
       stones[i].clicked = true;
@@ -133,6 +113,7 @@ function mousePressed(){
 }
 
 function mouseReleased(){
+  if (touches[0]) return;
   for (var i=0;i<stones.length;i++){
     if (stones[i].clicked){
       stones[i].clicked = false;
@@ -141,12 +122,13 @@ function mouseReleased(){
 }
 
 function touchStarted(){
-  if (touchCheck(touches[0])){
-    stones[i].over = true;
-    stones[i].clicked = true;
-  } else {
-    stones[i].over = false;
-    stones[i].clicked = false;
+  for (var i=0;i<stones.length;i++){
+      stones[i].mouseStuff();
+      if (stones[i].over)
+      {
+        stones[i].clicked = true;
+      }
+    
   }
 }
 
@@ -156,21 +138,6 @@ function touchEnded(){
       stones[i].clicked = false;
     }
   }
-}
-
-function deviceOrient(){
-  //deviceOrientation = 'landscape';
-  
-  // push();
-  //   textSize(30);
-  //   noStroke();
-  //   fill(0);
-  //   text(floor(rotationX), width/2, height/2);
-  // pop();
-  
-  //world.gravity.x = constrain(map(rotationX, -90, 90, -1, 1));
-  //world.gravity.y = constrain(map(rotationX, 0, 90, -1, 0));
-  
 }
 
 function touchCheck(touchZero){
@@ -188,13 +155,12 @@ function passThrough(){
   for (i=0;i<stones.length;i++){
     bodies.push(stones[i].body);
   }
-
   var numOver = Matter.Query.point(bodies, Matter.Vector.create(mouseX,mouseY));
   if (numOver.length > 0){
-    console.log('yep!');
+    // console.log('yep!');
     canvDiv.style('pointer-events', 'auto');
   } else {
-    console.log('nope!');
+    // console.log('nope!');
     canvDiv.style('pointer-events', 'none');
   }
 }

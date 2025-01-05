@@ -14,7 +14,7 @@ var diagonal;
 var canv;
 var canvDiv;
 
-let areaMax = 250;
+let areaMax = 225;
 let areaStones = 0;
 //MATTER JS MODULE ALIASES
 
@@ -55,7 +55,17 @@ function setup() {
 for (var i=0;i<20;i++){
     let posx = random(0, width);
     let posy = random(0, height);
-    let rad = random(diagonal/8, diagonal/14);
+    let bigStones = 1;
+    let rad;
+    if ( i < bigStones )      // make sure there's at least X large stones
+    {
+      rad = random(diagonal/7, diagonal/9);
+    }
+    else                      // fill the rest until we meet areaMax
+    {
+      rad = random(diagonal/8, diagonal/14);
+    }
+    
     let n = random(10, 20);
     var s = new Stone(posx, posy, rad, n);
     // print(rad);

@@ -13,6 +13,9 @@ var mConstraint;
 var diagonal;
 var canv;
 var canvDiv;
+
+let areaMax = 250;
+let areaStones = 0;
 //MATTER JS MODULE ALIASES
 
 var Engine = Matter.Engine,
@@ -33,17 +36,39 @@ function setup() {
   
   engine = Engine.create();
   world = engine.world;
-  world.gravity.scale = 0.001;
+  world.gravity.scale = 0.001; // normal
+  // world.gravity.scale = 0.0005; // easier 
   container();
   
-  for (var i=0;i<3;i++){
-    var s = new Stone(random(0, width), random(0, height), random(diagonal/8, diagonal/9), random(10, 20));
+  // //create 3 bigger stones
+  // for (var i=0;i<3;i++){
+  //   var s = new Stone(random(0, width), random(0, height), random(diagonal/8, diagonal/9), random(10, 20));
+  //   stones.push(s);
+  // }
+  // //create 8 smaller stones
+  // for (var i=0;i<8;i++){
+  //   var s = new Stone(random(0, width), random(0, height), random(diagonal/9, diagonal/12), random(10, 20));
+  //   stones.push(s);
+  // }
+
+  // new hopefully more consistent method, create stones until areaMax has been met.
+for (var i=0;i<20;i++){
+    let posx = random(0, width);
+    let posy = random(0, height);
+    let rad = random(diagonal/8, diagonal/14);
+    let n = random(10, 20);
+    var s = new Stone(posx, posy, rad, n);
+    // print(rad);
+    let thisArea = (PI * (rad*rad)) / 1000;
+    print(thisArea);
+    areaStones += thisArea;
+    if (areaStones > areaMax) {
+      print(stones.length);
+      break;
+    }
+
     stones.push(s);
-  }
-  for (var i=0;i<8;i++){
-    var s = new Stone(random(0, width), random(0, height), random(diagonal/9, diagonal/12), random(10, 20));
-    stones.push(s);
-  }
+} 
   
   for (var j=0;j<stones.length;j++){
     stones[j].createPoly();

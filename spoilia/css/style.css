@@ -96,6 +96,7 @@ canvas {
     }
 
     .obscuredText {
+        max-width: 640px;
         width: 100vw;
     }
 

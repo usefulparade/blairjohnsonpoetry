@@ -16,6 +16,8 @@ var canvDiv;
 
 let areaMax = 225;
 let areaStones = 0;
+
+let touchScreen = false;
 //MATTER JS MODULE ALIASES
 
 var Engine = Matter.Engine,
@@ -27,7 +29,13 @@ var Engine = Matter.Engine,
 
 function setup() {
   wWidth = 640;
+  if (windowWidth < 640)
+  {
+    wWidth = windowWidth;
+  }
   wHeight = 480;
+
+  areaMax = wWidth * 0.33;
   canv = createCanvas(wWidth, wHeight);
   canv.parent('canvasParent');
   canvDiv = select('#canvasParent');
@@ -98,6 +106,13 @@ function draw() {
     stones[i].show();
     stones[i].mouseStuff();
     stones[i].mouseForce();
+  }
+
+  if (!touchScreen && touches[0])
+  {
+    console.log("touchscreen gravity active");
+    world.gravity.scale = 0.00033; // easier on touchscreen
+    touchScreen = true;
   }
   
   passThrough();

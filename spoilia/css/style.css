@@ -123,9 +123,12 @@ canvas {
         width: 100vw;
     }
 
+    .text {
+        padding: 20px;
+    }
+
     .container {
         display: fixed;
-        
         width: 100vw;
         height: 100vh;
         margin-bottom: 0px;

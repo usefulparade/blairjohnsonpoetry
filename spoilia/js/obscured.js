@@ -131,7 +131,7 @@ function textDisplay(){
 
 function container(){
   ground = Bodies.rectangle(width/2, height+55, width*2, 100, {isStatic: true});
-  ceiling = Bodies.rectangle(width/2, 0-100, width*2, 100, {isStatic: true});
+  ceiling = Bodies.rectangle(width/2, 0-width/2, width*2, width/4, {isStatic: true});
   lWall = Bodies.rectangle(0-55, height/2, 100, height*10, {isStatic: true});
   rWall = Bodies.rectangle(width+55, height/2, 100, height*10, {isStatic: true});
 
@@ -201,11 +201,18 @@ function touchCheck(touchZero){
 }
 
 function passThrough(){
+
   var bodies = [];
   for (i=0;i<stones.length;i++){
     bodies.push(stones[i].body);
   }
+
   var numOver = Matter.Query.point(bodies, Matter.Vector.create(mouseX,mouseY));
+  if (touchScreen && touches[0])
+  {
+    numOver = Matter.Query.point(bodies, Matter.Vector.create(touches[0].x,touches[0].y));
+  }
+  
   if (numOver.length > 0){
     // console.log('yep!');
     canvDiv.style('pointer-events', 'auto');
@@ -213,4 +220,5 @@ function passThrough(){
     // console.log('nope!');
     canvDiv.style('pointer-events', 'none');
   }
+
 }

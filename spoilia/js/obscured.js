@@ -17,6 +17,8 @@ var canvDiv;
 let areaMax = 225;
 let areaStones = 0;
 
+let singleStone = false;
+
 let touchScreen = false;
 //MATTER JS MODULE ALIASES
 
@@ -36,6 +38,8 @@ function setup() {
   wHeight = 480;
 
   areaMax = wWidth * 0.33;
+
+
   canv = createCanvas(wWidth, wHeight);
   canv.parent('canvasParent');
   canvDiv = select('#canvasParent');
@@ -80,6 +84,10 @@ for (var i=0;i<20;i++){
     let thisArea = (PI * (rad*rad)) / 1000;
     print(thisArea);
     areaStones += thisArea;
+    if (singleStone && stones.length == 2)
+    {
+      break;
+    }
     if (areaStones > areaMax) {
       print(stones.length);
       break;

@@ -84,7 +84,7 @@ for (var i=0;i<20;i++){
     let thisArea = (PI * (rad*rad)) / 1000;
     print(thisArea);
     areaStones += thisArea;
-    if (singleStone && stones.length == 2)
+    if (singleStone && stones.length == 3)
     {
       break;
     }

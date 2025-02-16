@@ -18,6 +18,14 @@ p {
 
 }
 
+b, ol {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+    -moz-user-select: none;     /* Firefox all */
+    -ms-user-select: none;      /* IE 10+ */
+    user-select: none;          /* Likely future */  
+    cursor: text; 
+}
+
 a:link {
     color: #0000EE;
 }
@@ -83,6 +91,16 @@ canvas {
     overflow-y: hidden;
     z-index: 0;
     text-align: justify;
+}
+
+.obscuredText#notes {
+    overflow: scroll;
+}
+
+#epigraph p {
+    font-size: 1.2em;
+    margin-right: 10%;
+    margin-left: 10%;
 }
 
 #textTable {

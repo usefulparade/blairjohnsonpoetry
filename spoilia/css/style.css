@@ -44,15 +44,16 @@ a:active {
     position: relative;
     margin-left: auto;
     margin-right: auto;
+    box-sizing: border-box;
     width: 640px;
-    height: 480px;
-    margin-top: 5vh;
+    height: 100vh;
+    padding-top: 5vh;
 
 }
 
 .titlepage_container {
-    display: block;
-    position: absolute;
+    display: inline-block;
+    position: relative;
     width: 640px;
     height: 480px;
     margin-top: 10%;
@@ -73,10 +74,36 @@ a:active {
     right: 31%;
 }
 
+.notes#canvasParent
+{
+    /* bottom: 0px; */
+}
+
 #canvasParent {
     display: block; 
     position: fixed;
     z-index: 0;
+}
+
+.etc{
+    display: inline-block;
+    position: relative;
+    margin: 0px;
+    bottom: 0px;
+}
+
+.etc p {
+    font-size: 1em;
+    margin: 0px;
+    padding-left: 15px;
+}
+
+p#notes {
+    display: block;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    font-size: 1em;
 }
 
 canvas {
@@ -94,7 +121,9 @@ canvas {
 }
 
 .obscuredText#notes {
-    overflow: scroll;
+    overflow-y: scroll;
+    padding-right:20px;
+    /* bottom: 10px; */
 }
 
 #epigraph p {

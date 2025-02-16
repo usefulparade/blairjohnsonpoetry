@@ -139,7 +139,7 @@ function textDisplay(){
 
 function container(){
   ground = Bodies.rectangle(width/2, height+55, width*2, 100, {isStatic: true});
-  ceiling = Bodies.rectangle(width/2, 0-width/2, width*2, width/4, {isStatic: true});
+  ceiling = Bodies.rectangle(width/2, 0-width, width*2, width/2, {isStatic: true});
   lWall = Bodies.rectangle(0-55, height/2, 100, height*10, {isStatic: true});
   rWall = Bodies.rectangle(width+55, height/2, 100, height*10, {isStatic: true});
 
@@ -186,7 +186,6 @@ function touchStarted(){
       {
         stones[i].clicked = true;
       }
-    
   }
 }
 
@@ -196,6 +195,9 @@ function touchEnded(){
       stones[i].clicked = false;
     }
   }
+  // if not actively touching, put the registered touch point in a place where links will more reliably register on first click
+  touches[0] = createVector(0,0);
+  
 }
 
 function touchCheck(touchZero){
@@ -209,7 +211,7 @@ function touchCheck(touchZero){
 }
 
 function passThrough(){
-
+  
   var bodies = [];
   for (i=0;i<stones.length;i++){
     bodies.push(stones[i].body);
@@ -221,11 +223,12 @@ function passThrough(){
     numOver = Matter.Query.point(bodies, Matter.Vector.create(touches[0].x,touches[0].y));
   }
   
+  canvDiv.style('pointer-events', 'none');
   if (numOver.length > 0){
-    // console.log('yep!');
+    console.log('stone mode!');
     canvDiv.style('pointer-events', 'auto');
   } else {
-    // console.log('nope!');
+    console.log('link mode!');
     canvDiv.style('pointer-events', 'none');
   }
 

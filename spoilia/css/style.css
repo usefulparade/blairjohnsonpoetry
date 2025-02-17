@@ -6,6 +6,7 @@ body {
     padding: 0px;
     margin: 0px;
     font-family: 'EB Garamond', serif;
+    overflow: hidden;
 }
 
 p {
@@ -48,6 +49,7 @@ a:active {
     width: 640px;
     height: 100vh;
     padding-top: 5vh;
+    overflow-y: hidden;
 
 }
 
@@ -175,9 +177,10 @@ canvas {
     }
 
     .container {
-        display: fixed;
+        display: block;
+        position: relative;
         width: 100vw;
-        height: 100vh;
+        /* height: 100vh; */
         margin-bottom: 0px;
     }
 

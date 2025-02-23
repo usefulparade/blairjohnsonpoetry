@@ -20,6 +20,9 @@ let areaStones = 0;
 let singleStone = false;
 
 let touchScreen = false;
+
+let optionsOpen = false;
+
 //MATTER JS MODULE ALIASES
 
 var Engine = Matter.Engine,
@@ -232,4 +235,31 @@ function passThrough(){
     canvDiv.style('pointer-events', 'none');
   }
 
+}
+
+function toggleOptions(){
+  let options = document.getElementById("options");
+  let toggle = document.getElementById("options-toggle");
+  console.log('options clicked');
+
+  if (!optionsOpen)
+  {
+    options.style.top = "0px";
+    options.style.opacity = "1";
+    optionsOpen = true;
+    toggle.innerHTML = "-";
+  }
+  else
+  {
+    options.style.top = "-40px";
+    options.style.opacity = "0";
+    optionsOpen = false;
+    toggle.innerHTML = "+";
+  }
+  
+}
+
+function changeGravity(){
+  let gravitySlider = document.getElementById("gravity");
+  world.gravity.scale = constrain(map(gravitySlider.value, 0, 10, 0.0003, 0.001), 0.0003, 0.001);
 }

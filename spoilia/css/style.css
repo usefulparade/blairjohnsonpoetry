@@ -95,7 +95,7 @@ a:active {
 }
 
 .etc p {
-    font-size: 1em;
+    font-size: 1.25em;
     margin: 0px;
     padding-left: 15px;
 }
@@ -129,7 +129,7 @@ canvas {
 }
 
 #epigraph p {
-    font-size: 1.2em;
+    /* font-size: 1.2em; */
     margin-right: 10%;
     margin-left: 10%;
 }
@@ -160,6 +160,55 @@ canvas {
 .off {
     pointer-events: none;
 }
+
+.options-toggle {
+    display: block;
+    position: fixed;
+    font-family: 'Courier New', Courier, monospace;
+    top: 6px;
+    left: 0px;
+    padding-left: 24px;
+    padding-bottom: 12px;
+    line-height: 0px;
+    width: 36px;
+    height: 36px;
+    z-index: 200;
+}
+
+.options-toggle p {
+    pointer-events: none;
+}
+
+.options-toggle:hover
+{
+    cursor: pointer;
+}
+
+.options {
+    display: block;
+    position: fixed;
+    top: -40px;
+    left: 48px;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    z-index: 200;
+}
+
+.options p {
+    /* font-family: 'Courier New', Courier, monospace; */
+    font-size: 16px;
+}
+
+.options span {
+    padding-left: 12px;
+}
+
+input[type="range"] {
+    height: 10px;
+    width: 100px;
+    margin: 0;
+}
+
 
 @media only screen and (max-width: 640px){
     
@@ -196,5 +245,13 @@ canvas {
     
     .titlepage_container p {
         font-size: 1em;
+    }
+
+    .etc p {
+        font-size: 1em;
+    }
+
+    .options-toggle p {
+        font-size: 24px;
     }
 }

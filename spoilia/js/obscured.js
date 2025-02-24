@@ -142,7 +142,7 @@ function textDisplay(){
 
 function container(){
   ground = Bodies.rectangle(width/2, height+55, width*2, 100, {isStatic: true});
-  ceiling = Bodies.rectangle(width/2, 0-width, width*2, width/2, {isStatic: true});
+  ceiling = Bodies.rectangle(width/2, 0-width*0.4, width*2, width/2, {isStatic: true});
   lWall = Bodies.rectangle(0-55, height/2, 100, height*10, {isStatic: true});
   rWall = Bodies.rectangle(width+55, height/2, 100, height*10, {isStatic: true});
 

@@ -190,8 +190,11 @@ canvas {
     top: -40px;
     left: 48px;
     opacity: 0;
+    /* width: 100%; */
     transition: all 0.2s ease-in-out;
     z-index: 200;
+    padding-right: 12px;
+    background-color: white;
 }
 
 .options p {

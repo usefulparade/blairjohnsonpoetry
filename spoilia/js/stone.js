@@ -17,11 +17,12 @@ function Stone(x, y, s, n){
     
     this.body = Bodies.fromVertices(this.pos.x, this.pos.y, this.verts);
     //this.body.timeScale = 1;
-    this.body.friction = 0.01;
+    this.body.friction = 0;
     this.body.intertia = 1;
     //this.body.frictionAir= 0.3;
-    //this.body.restitution = 0.1;
-    //this.body.slop = 0.2;
+    this.body.restitution = 0;
+    this.body.slop = 0;
+    Matter.Body.setMass(this.body, 0);
     Matter.Body.setDensity(this.body, 0.01);
     World.add(engine.world, [this.body]);
   };

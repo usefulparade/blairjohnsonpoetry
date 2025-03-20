@@ -22,7 +22,6 @@ function Stone(x, y, s, n){
     //this.body.frictionAir= 0.3;
     this.body.restitution = 0;
     this.body.slop = 0;
-    Matter.Body.setMass(this.body, 0);
     Matter.Body.setDensity(this.body, 0.01);
     World.add(engine.world, [this.body]);
   };
